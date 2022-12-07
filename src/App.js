@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import routes from 'routes';
 
 const App = () => (
-  <Routes>
+  <Routes className="position-relative">
     {routes.map((route) => (
       <Route key={route.path} path={route.path} element={route.page} />
     ))}
