@@ -1,18 +1,27 @@
-.login {
+.register {
   width: 95%;
-  max-width: 35.5rem;
-  height: 31.813rem;
+  max-width: 568px;
+  height: 550px;
   background: #ffffff;
   box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
 
-.masuk {
+.daftar {
   font-style: normal;
   font-weight: 700;
   font-size: 1.625rem;
   line-height: 1.563rem;
   letter-spacing: 0.04em;
+  color: #730c07;
+}
+
+.kembali {
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
   color: #730c07;
 }
 
@@ -40,7 +49,7 @@
   color: #868686;
 }
 
-.buttonSignIn {
+.buttonSignUp {
   background: #eb3f36;
   box-shadow: 0px 7px 6px rgba(0, 0, 0, 0.17);
   border-radius: 7px;

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import routes from 'routes';
+import routes from 'routes/routes';
 
 const App = () => (
   <Routes className="position-relative">

@@ -14,13 +14,25 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [type, setType] = useState(false);
 
+  const showPasswordHandler = () => {
+    if (show === false) {
+      setShow(true);
+      setType(true);
+      setPassword(passwordInputRef.current.value);
+    } else {
+      setShow(false);
+      setType(false);
+      setPassword(passwordInputRef.current.value);
+    }
+  };
+
   const submitHandler = async (event) => {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    if (enteredEmail.trim() === '' || enteredPassword.trim() === '') {
+    if (enteredEmail.trim().length === 0 || enteredPassword.trim().length === 0) {
       alert('Please enter a valid input username/password.');
     }
 
@@ -41,24 +53,14 @@ const LoginPage = () => {
     console.log(getData);
   };
 
-  const showPasswordHandler = () => {
-    if (show === false) {
-      setShow(true);
-      setType(true);
-      setPassword(passwordInputRef.current.value);
-    } else {
-      setShow(false);
-      setType(false);
-      setPassword(passwordInputRef.current.value);
-    }
-  };
-
   return (
-    <section className={`position-absolute top-50 start-50 translate-middle ${classes.auth}`}>
-      <div className="m-4">
-        <p className={classes.masuk}>Masuk</p>
+    <section
+      className={`container position-absolute top-50 start-50 translate-middle ${classes.login}`}
+    >
+      <div className="row m-4">
+        <p className={`pb-1 ${classes.masuk}`}>Masuk</p>
         <Form onSubmit={submitHandler}>
-          <Form.Group className={`pt-3 pb-2 ${classes.control}`} controlId="formBasicEmail">
+          <Form.Group className={`py-3 ${classes.control}`} controlId="email">
             <Form.Control
               type="email"
               autoComplete="email"
@@ -67,13 +69,13 @@ const LoginPage = () => {
               ref={emailInputRef}
             />
           </Form.Group>
-          <InputGroup className={`py-3 ${classes.control}`}>
+          <InputGroup className={`py-2 ${classes.control}`}>
             <Form.Control
               type={`${type ? 'text' : 'password'}`}
               autoComplete="current-password"
               placeholder="Password"
               aria-label="password"
-              aria-describedby="password"
+              minLength="8"
               required
               ref={passwordInputRef}
               defaultValue={password}
@@ -94,9 +96,7 @@ const LoginPage = () => {
             MASUK
           </Button>
         </Form>
-        <div className={`mt-5 ${classes.line}`}>
-          <hr />
-        </div>
+        <div className={`mt-5 ${classes.line}`} />
         <p className="text-center pt-4 text-mute">
           Belum punya akun?{' '}
           <Link

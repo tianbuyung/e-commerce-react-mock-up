@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-param-reassign */
-const API = 'https://techtest.folkatech.com/api';
+const API = process.env.REACT_APP_SERVER;
 
 class BaseService {
   async fetch({ path, options }) {
