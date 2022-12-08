@@ -7,6 +7,35 @@ import {
   ProfilePage,
   RegisterPage,
 } from 'pages';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+const ProtectedRouteNonAuth = ({ children }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/profile');
+    }
+  }, [isAuthenticated, navigate]);
+
+  return children;
+};
+
+const ProtectedRouteAuth = ({ children }) => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, navigate]);
+
+  return children;
+};
 
 const routes = [
   {
@@ -15,15 +44,27 @@ const routes = [
   },
   {
     path: '/login',
-    page: <LoginPage />,
+    page: (
+      <ProtectedRouteNonAuth>
+        <LoginPage />
+      </ProtectedRouteNonAuth>
+    ),
   },
   {
     path: '/register',
-    page: <RegisterPage />,
+    page: (
+      <ProtectedRouteNonAuth>
+        <RegisterPage />
+      </ProtectedRouteNonAuth>
+    ),
   },
   {
     path: '/product-list',
-    page: <ProductListPage />,
+    page: (
+      <ProtectedRouteAuth>
+        <ProductListPage />
+      </ProtectedRouteAuth>
+    ),
   },
   {
     path: '/product-details/:id',
@@ -31,7 +72,11 @@ const routes = [
   },
   {
     path: '/profile',
-    page: <ProfilePage />,
+    page: (
+      <ProtectedRouteAuth>
+        <ProfilePage />
+      </ProtectedRouteAuth>
+    ),
   },
   {
     path: '*',

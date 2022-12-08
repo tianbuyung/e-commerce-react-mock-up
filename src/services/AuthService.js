@@ -8,7 +8,7 @@ class AuthService extends BaseService {
       body: JSON.stringify(payload),
     };
 
-    const request = await this.fetch({ path, options });
+    const request = await this.fetch(path, options, false);
 
     return request;
   };
@@ -20,7 +20,7 @@ class AuthService extends BaseService {
       body: JSON.stringify(payload),
     };
 
-    const request = await this.fetch({ path, options });
+    const request = await this.fetch(path, options, false);
 
     return request;
   };

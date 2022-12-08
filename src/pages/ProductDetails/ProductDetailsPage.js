@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-import Layout from 'components/Layout/Layout';
+import { Layout } from 'components';
 
-const ProductDetails = () => (
+const ProductDetailsPage = () => (
   <Layout>
     <Container>ProductDetails</Container>
   </Layout>
 );
 
-export default ProductDetails;
+export default ProductDetailsPage;

@@ -9,7 +9,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['react', 'react-hooks'],
   rules: {
     'no-console': 0,
     'jsx-a11y/label-has-associated-control': 0,
@@ -62,6 +62,9 @@ module.exports = {
         aspects: ['noHref', 'invalidHref', 'preferButton'],
       },
     ],
+    'no-param-reassign': [2, { props: true, ignorePropertyModificationsFor: ['state'] }],
+    'react-hooks/rules-of-hooks': 1,
+    'react-hooks/exhaustive-deps': 1, // Checks effect dependencies
   },
   settings: {
     'import/resolver': {

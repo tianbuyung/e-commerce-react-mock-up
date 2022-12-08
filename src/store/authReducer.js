@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -11,15 +10,15 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state) => {
-      state.isAuthenticated = !state.isAuthenticated;
+      state.isAuthenticated = true;
     },
-    logout: (state) => {
-      state.isAuthenticated = !state.isAuthenticated;
+    setLogout: (state) => {
+      state.isAuthenticated = false;
       localStorage.clear();
     },
   },
 });
 
-export const { setUser, logout } = authSlice.actions;
+export const { setUser, setLogout } = authSlice.actions;
 
 export default authSlice.reducer;
