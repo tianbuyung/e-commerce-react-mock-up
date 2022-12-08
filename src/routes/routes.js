@@ -2,7 +2,7 @@ import {
   ErrorPage,
   HomePage,
   LoginPage,
-  ProductDetailPage,
+  ProductDetailsPage,
   ProductListPage,
   ProfilePage,
   RegisterPage,
@@ -26,8 +26,8 @@ const routes = [
     page: <ProductListPage />,
   },
   {
-    path: '/product-detail/:id',
-    page: <ProductDetailPage />,
+    path: '/product-details/:id',
+    page: <ProductDetailsPage />,
   },
   {
     path: '/profile',

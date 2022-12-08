@@ -3,10 +3,10 @@ import { Container } from 'react-bootstrap';
 
 import Layout from 'components/Layout/Layout';
 
-const ProductList = () => (
+const ProductDetails = () => (
   <Layout>
-    <Container>ProductList</Container>
+    <Container>ProductDetails</Container>
   </Layout>
 );
 
-export default ProductList;
+export default ProductDetails;
