@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 import AuthService from 'services/AuthService';
+import { setUser } from 'store/authReducer';
 import classes from './LoginPage.module.css';
 
 const authService = new AuthService();
@@ -13,6 +15,8 @@ const LoginPage = () => {
   const [show, setShow] = useState(false);
   const [password, setPassword] = useState('');
   const [type, setType] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const showPasswordHandler = () => {
     if (show === false) {
@@ -43,14 +47,23 @@ const LoginPage = () => {
 
     const getData = await authService.login(payload);
     if (getData.code === 400) {
-      alert(getData.data.password[0]);
+      const passwordError = await getData?.data?.password[0];
+      if (passwordError !== undefined) {
+        alert(`${getData.message}: ${getData.data.password[0]}`);
+        return;
+      }
+      alert(getData.message);
+      return;
     }
     if (getData.code === 404) {
       alert(getData.message);
+      return;
     }
+    localStorage.setItem('token', getData.data.token);
+    dispatch(setUser());
     emailInputRef.current.value = '';
     passwordInputRef.current.value = '';
-    console.log(getData);
+    navigate('/profile');
   };
 
   return (
