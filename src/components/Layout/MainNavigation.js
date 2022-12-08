@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Col, Container, Form, InputGroup, Navbar, Row } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
 
@@ -34,7 +35,12 @@ const MainNavigation = () => (
     <Navbar bg="light" style={{ height: '45px' }}>
       <Container fluid>
         <Container>
-          <Button variant="danger" className={`${classes.menuButton}`}>
+          <Button
+            as={NavLink}
+            to="/product-list"
+            variant="danger"
+            className={`${classes.menuButton}`}
+          >
             BELANJA <i className="bi bi-caret-down-fill" />
           </Button>
         </Container>
