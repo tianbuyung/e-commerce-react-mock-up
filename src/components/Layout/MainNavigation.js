@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Col, Container, Form, InputGroup, Navbar, Row } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
 
@@ -24,10 +24,10 @@ const MainNavigation = () => (
           <div className="d-flex mx-1">
             <i className="bi bi-heart mx-2" />
             <i className="bi bi-bag-check mx-2" />
-            <div className="ms-2">
+            <Link to="/profile" className="ms-2 text-black" style={{ cursor: 'pointer' }}>
               <i className="bi bi-person" />
               <i className="bi bi-caret-down-fill" />
-            </div>
+            </Link>
           </div>
         </Col>
       </Row>

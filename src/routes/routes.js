@@ -68,7 +68,11 @@ const routes = [
   },
   {
     path: '/product-details/:id',
-    page: <ProductDetailsPage />,
+    page: (
+      <ProtectedRouteAuth>
+        <ProductDetailsPage />
+      </ProtectedRouteAuth>
+    ),
   },
   {
     path: '/profile',

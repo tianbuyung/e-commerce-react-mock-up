@@ -32,9 +32,12 @@ const ProductListPage = () => {
   return (
     <Layout>
       <Container>
+        Breadcrumb
         <Row>
-          <Col>Sidebar</Col>
-          <Col>
+          <Col md={2} lg={3}>
+            Sidebar
+          </Col>
+          <Col md={10} lg={9}>
             <ProductList />
           </Col>
         </Row>
